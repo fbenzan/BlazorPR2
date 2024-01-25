@@ -1,0 +1,39 @@
+﻿@page "/tarjetas"
+@using Colmado.Pages.Components;
+<h3>Tarjetas</h3>
+<div class="container">
+    <label>Nombre</label>
+    <input @bind="valor" />
+    <a 
+        class="btn btn-success" 
+        @onclick="AgregarNombre"
+    >+</a>
+</div>
+@if (Nombres.Any())
+{
+    @foreach(var nombre in Nombres)
+    {
+        <Tarjeta Nombre="@nombre" />
+    }
+}
+
+@code {
+    public string valor { get; set; } = "";
+    public List<string> Nombres
+    { get; set; } = 
+    new List<string>();
+
+    protected override void OnInitialized()
+    {
+        Nombres = new List<string>()
+        {
+            "..."
+        };
+    }
+    void AgregarNombre()
+    {
+        Nombres.Add(valor);
+        valor = "";
+        StateHasChanged();
+    }
+}
