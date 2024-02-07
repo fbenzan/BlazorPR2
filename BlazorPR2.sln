@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorPR2.Server", "BlazorP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colmado", "Colmado\Colmado.csproj", "{66AC34C3-EB69-444E-91CF-2DA1AF5E753C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuintaAPP", "QuintaAPP\QuintaAPP.csproj", "{F97A9684-34C7-4BE5-8AC3-9BFE79FA3EA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{66AC34C3-EB69-444E-91CF-2DA1AF5E753C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66AC34C3-EB69-444E-91CF-2DA1AF5E753C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66AC34C3-EB69-444E-91CF-2DA1AF5E753C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97A9684-34C7-4BE5-8AC3-9BFE79FA3EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97A9684-34C7-4BE5-8AC3-9BFE79FA3EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97A9684-34C7-4BE5-8AC3-9BFE79FA3EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97A9684-34C7-4BE5-8AC3-9BFE79FA3EA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
