@@ -1,0 +1,31 @@
+﻿@page "/estudiantes"
+<h3>Estudiantes 
+    <span @onclick="()=>New = !New" class="btn btn-outline-success">+</span>
+    </h3>
+@if (New)
+{
+    <FormEstudiante/>
+}
+<table class="table">
+    <thead>
+        <tr class="row">
+            <th class="col-4">Matricula</th>
+            <th class="col-8">Nombre(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Memoria.Estudiantes.Any())
+        {
+            @foreach (var estudiante in Memoria.Estudiantes)
+            {
+                <tr class="row">
+                    <th class="col-4">@estudiante.Matricula</th>
+                    <th class="col-8">@estudiante.Nombres</th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@code {
+    public bool New { get; set; } = false;
+}

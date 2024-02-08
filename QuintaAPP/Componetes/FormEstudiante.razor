@@ -1,0 +1,45 @@
+﻿<div class="card">
+    <div class="card-header">
+        <span class="card-title">
+            Registrar Estudiante
+        </span>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4">
+                <label class="form-label">
+                    Matricula
+                </label>
+                <input @bind="Datos.Matricula" type="text" class="form-control" placeholder="Matricula"/>
+            </div>
+            <div class="col-8">
+                <label class="form-label">
+                    Nombre(s)
+                </label>
+                <input @bind="Datos.Nombres" class="form-control" type="text" placeholder="Nombre(s)" />
+            </div>
+        </div>
+        <div class="row">
+            <p>Tu nombre es:
+                <strong>@Datos.Nombres</strong> 
+                y tu matricula es: <strong>@Datos.Matricula</strong>.
+            </p>
+        </div>
+    </div>
+    <div class="card-footer">
+        <span @onclick="Guardar" class="btn btn-primary">
+            Guardar
+        </span>
+    </div>
+</div>
+@code {
+    public Data.Estudiante Datos { get; set; }
+        = new Data.Estudiante();
+
+    public void Guardar()
+    {
+        Memoria.Estudiantes.Add(Datos);//Agrego la data a la memoria
+        Datos = new Data.Estudiante();//Limpio los datos locales
+        StateHasChanged();
+    }
+}
