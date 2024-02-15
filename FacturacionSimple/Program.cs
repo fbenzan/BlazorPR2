@@ -1,9 +1,10 @@
+using FacturacionSimple;
 using FacturacionSimple.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebApplication.CreateBuilder(args);
-
+Memoria.Facturas = new();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
