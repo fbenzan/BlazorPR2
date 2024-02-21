@@ -4,9 +4,14 @@
 <h3>Facturas</h3>
 <div class="row">
     <div class="col">
+        
         <label class ="form-label">Opciones de busqueda (Nombre del cliente)</label>
+        <div class=" input-group mb-3">
         <input class="form-control" @bind="Filtrar" />
-        <span class="btn btn-secondary" @onclick="Buscar">Buscar</span>
+        <div class="input-group-text">
+            <span class="btn btn-secondary" @onclick="Buscar">Buscar</span>
+        </div>
+        </div>
     </div>
 </div>
 <table class="table">

@@ -5,29 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebApplication.CreateBuilder(args);
-Memoria.Facturas = new()
-{
-    new Factura()
-    {
-        Cliente = "Felix Benzan",
-        Numero = 1,
-        Fecha = DateTime.Now,
-        Detalles = new List<FacturaDetalle>
-        {
-            new FacturaDetalle(){ Producto="Yuca", Cantidad = 2, Precio = 50}
-        }
-    },
-    new Factura()
-    {
-        Cliente = "Jorge Luis Velazquez",
-        Numero = 2,
-        Fecha = DateTime.Now.AddDays(1),
-        Detalles = new List<FacturaDetalle>
-        {
-            new FacturaDetalle(){ Producto="Queso", Cantidad = 3, Precio = 150}
-        }
-    }
-};
+Memoria.Facturas = new();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
