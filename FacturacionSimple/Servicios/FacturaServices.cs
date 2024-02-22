@@ -1,19 +1,27 @@
-﻿using FacturacionSimple.Data;
+﻿using FacturacionSimple.Context;
+using FacturacionSimple.Data;
 using Microsoft.AspNetCore.Mvc;
 namespace FacturacionSimple.Servicios;
 
 public class FacturaServices : IFacturaServices
 {
+    private readonly IFSDbContext dbContext;
+
+    public FacturaServices(IFSDbContext dbContext)
+    {
+        this.dbContext = dbContext;
+    }
     public bool Crear(Factura datos)
     {
         var proxima_factura =
-            (Memoria.Facturas != null && Memoria.Facturas.Any()) ?
-            Memoria.Facturas.Max(f => f.Numero) + 1 : 1;
+            (dbContext.Facturas.Any()) ?
+            dbContext.Facturas.Max(f => f.Numero) + 1 : 1;
         datos.Numero = proxima_factura;
         datos.Fecha = DateTime.Now;
         try
         {
-            Memoria.Facturas!.Add(datos);
+            dbContext.Facturas!.Add(datos);
+            dbContext.SaveChanges();
             return true;
         }
         catch
@@ -23,7 +31,7 @@ public class FacturaServices : IFacturaServices
     }
     public List<Factura> Consultar(string filtro = "")
     {
-        return Memoria.Facturas
+        return dbContext.Facturas
             .Where(f => f.Cliente.Contains(filtro))
             .ToList();
     }
