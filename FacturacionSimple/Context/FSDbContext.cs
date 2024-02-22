@@ -1,4 +1,5 @@
 ﻿using FacturacionSimple.Data;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 namespace FacturacionSimple.Context;
@@ -10,7 +11,11 @@ public class FSDbContext : DbContext, IFSDbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("DataSource=FSDbContext.db");
+        var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "FSDbContext.db" };
+        var databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, connectionStringBuilder.DataSource);
+        connectionStringBuilder.DataSource = databasePath;
+
+        optionsBuilder.UseSqlite(connectionStringBuilder.ToString());
     }
     public override int SaveChanges()
     {

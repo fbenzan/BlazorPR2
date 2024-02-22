@@ -1,6 +1,7 @@
 ﻿using FacturacionSimple.Context;
 using FacturacionSimple.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 namespace FacturacionSimple.Servicios;
 
 public class FacturaServices : IFacturaServices
@@ -32,6 +33,7 @@ public class FacturaServices : IFacturaServices
     public List<Factura> Consultar(string filtro = "")
     {
         return dbContext.Facturas
+            .Include(f=>f.Detalles)
             .Where(f => f.Cliente.Contains(filtro))
             .ToList();
     }

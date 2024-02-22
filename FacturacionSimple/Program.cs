@@ -15,6 +15,9 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<IFacturaServices,FacturaServices>();
 
 var app = builder.Build();
+using var context = app.Services.CreateScope()
+                     .ServiceProvider.GetRequiredService<FSDbContext>();
+context.Database.EnsureCreated();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
